@@ -13,7 +13,7 @@ function Login() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const {loading, error} = useSelector(state => state.user)
+    const { loading, error } = useSelector(state => state.user)
 
     const handleLogin = (e) => {
         console.log(e);
@@ -26,8 +26,10 @@ function Login() {
                 if (loginUser.fulfilled.match(result)) {
                     setEmail('');
                     setPassword('');
+                    console.log(result.payload)
                     const userName = result.payload.name;
-                    navigate('/login-success', { state: { userName } });
+                    const accessToken = result.payload.accessToken;
+                    navigate('/login-success', { state: { userName, accessToken } });
                 } else {
                     console.error('Login failed');
                 }
@@ -39,63 +41,70 @@ function Login() {
 
     return (
         <>
-            <Form
-                name="basic"
-                labelCol={{
-                    span: 8,
-                }}
-                wrapperCol={{
-                    span: 10,
-                }}
-                style={{
-                    maxWidth: 600,
-                }}
-                initialValues={{
-                    remember: true,
-                }}
+            <div style={{ height: '100vh', width: '100vw' }}>
+                <div style={{ width: '600px', margin: 'auto auto' }}>
 
-                onFinish={e => handleLogin(e)}
-            >
-                <Form.Item
-                    label="Email"
-                    name="Email"
-                    rules={[
-                        {
-                            required: true,
-                            message: 'Please input your Email!',
-                        },
-                    ]}
-                >
-                    <Input value={email} onChange={e => {setEmail}}/>
-                </Form.Item>
+                    <Form
+                        name="basic"
+                        labelCol={{
+                            span: 8,
+                        }}
+                        wrapperCol={{
+                            span: 10,
+                        }}
+                        style={{
+                            maxWidth: 600,
+                        }}
+                        initialValues={{
+                            remember: true,
+                        }}
 
-                <Form.Item
-                    label="Password"
-                    name="password"
-                    rules={[
-                        {
-                            required: true,
-                            message: 'Please input your password!',
-                        },
-                    ]}
-                >
-                    <Input.Password value={password} onChange={e => {setPassword}}/>
-                </Form.Item>
+                        onFinish={e => handleLogin(e)}
+                    >
+                        <Form.Item
+                            label="Email"
+                            name="Email"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Please input your Email!',
+                                },
+                            ]}
+                        >
+                            <Input value={email} onChange={e => { setEmail }} />
+                        </Form.Item>
 
-                <Form.Item
-                    wrapperCol={{
-                        offset: 8,
-                        span: 16,
-                    }}
-                >
-                    <Button type="primary" htmlType="submit">
-                        {loading ? 'Loading..' : 'Submit'}
-                    </Button>
-                    {error && (
-                        <Alert message={error} type="error" />
-                    )}
-                </Form.Item>
-            </Form>
+                        <Form.Item
+                            label="Password"
+                            name="password"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Please input your password!',
+                                },
+                            ]}
+                        >
+                            <Input.Password value={password} onChange={e => { setPassword }} />
+                        </Form.Item>
+
+                        <Form.Item
+                            wrapperCol={{
+                                offset: 8,
+                                span: 16,
+                            }}
+                        >
+                            <Button type="primary" htmlType="submit">
+                                {loading ? 'Loading..' : 'Submit'}
+                            </Button>
+                            {error && (
+                                <Alert message={error} type="error" />
+                            )}
+                        </Form.Item>
+                    </Form>
+                </div>
+
+            </div>
+
         </>
     )
 }

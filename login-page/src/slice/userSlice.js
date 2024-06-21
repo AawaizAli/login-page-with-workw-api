@@ -1,8 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const HOST_NAME = '';
-
 export const loginUser = createAsyncThunk('user/loginuser', async (user) => {
     const request = await axios.post(`https://dev.workw.com/konnectauth/api/login`, user);
     console.log(request);
@@ -17,6 +15,11 @@ const userSlice = createSlice({
         loading: false,
         user: null,
         error: null
+    },
+    reducers: {
+        updateAccessToken: (state, action) => {
+            state.accessToken = action.payload;
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -44,4 +47,6 @@ const userSlice = createSlice({
 }
 );
 
+
+export const { updateAccessToken } = userSlice.actions;
 export default userSlice.reducer;
