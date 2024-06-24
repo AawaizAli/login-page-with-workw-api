@@ -1,39 +1,66 @@
+/* Post.css */
+
 .post {
-    border: 1px solid #c6c6c6;
-    background-color: aliceblue;
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .post h2 {
-    margin-top: 0;
-    max-width: 770px !important;
-    word-wrap: break-word; /* This will ensure long words are wrapped onto the next line */
-    white-space: normal; /* Ensures that the text wraps within the container */
-  }
-  
-  .post p {
-    margin: 5px 0;
-  }
-  
-  .comments {
-    margin-top: 20px;
-  }
-  
-  .comment {
-    border-top: 1px solid #eee;
-    padding-top: 10px;
-  }
-  
-  .attachments {
-    margin-top: 10px;
-  }
-  
-  .attachment {
-    max-width: 100%;
-    height: auto;
-    margin-top: 10px;
-  }
-  
+  border: 1px solid #c6c6c6;
+  background-color: aliceblue;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.post h2 {
+  margin-top: 0;
+  max-width: 770px !important;
+  word-wrap: break-word; /* This will ensure long words are wrapped onto the next line */
+  white-space: normal; /* Ensures that the text wraps within the container */
+}
+
+.post p {
+  margin: 5px 0;
+}
+
+.comments {
+  margin-top: 20px;
+}
+
+.comment {
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.attachments {
+  margin-top: 10px;
+}
+
+.attachment {
+  margin-top: 10px;
+}
+
+.attachment-image {
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
+}
+
+.comment-attachments {
+  margin-top: 10px;
+}
+
+.comment-attachment {
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
+}
+
+.attachment a {
+  display: block;
+  margin-top: 10px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.attachment a:hover {
+  text-decoration: underline;
+}

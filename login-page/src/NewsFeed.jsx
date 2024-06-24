@@ -11,7 +11,7 @@ const NewsFeed = ({ newPosts }) => {
 
     useEffect(() => {
         setPosts(newPosts); 
-    }, [posts]);
+    }, [newPosts]);
 
     return (
         <div className="news-feed">
